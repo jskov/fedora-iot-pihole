@@ -26,12 +26,13 @@ Environment=TZ=Europe/Copenhagen
 PublishPort=8080:80
 PublishPort=8053:53/udp
 PublishPort=8053:53
-Volume=/opt/data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d/:rw
-Volume=/opt/data/pihole/etc-pihole:/etc/pihole:rw
+Volume=/opt/data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d/:Z,rw
+Volume=/opt/data/pihole/etc-pihole:/etc/pihole:Z,rw
 # The entry-point scripts set up IPV6. Kill that
 Tmpfs=/docker-entrypoint.d
 
-GlobalArgs=--log-level=warn --log-opt tag="pihole"
+GlobalArgs=--log-level=warn
+# --log-opt tag="pihole"
 PodmanArgs=--group-add=keep-groups --cidfile=/var/run/user/3020/pihole.cid
 # --cap-add=CAP_NET_RAW,CAP_NET_BIND_SERVICE
 
