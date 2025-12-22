@@ -1,0 +1,43 @@
+# For Podman Quad
+# To be placed in /etc/containers/systemd/users/3020/pihole.container
+#
+# Debug rendering with:
+#  /usr/lib/systemd/user-generators/podman-user-generator --dryrun
+#
+# sudo systemctl daemon-reload
+# systemctl list-unit-files
+# systemctl start pihole
+#
+# sudo systemctl --user -M pihole@ status pihole
+
+[Service]
+# Allows long image download time
+TimeoutStartSec=900
+
+# Implied by systemd users/3020
+#User=pihole
+#Group=pihole
+
+[Container]
+Image = @PIHOLE_IMAGE@
+
+ContainerName=pihole
+Environment=TZ=Europe/Copenhagen
+PublishPort=8080:80
+PublishPort=8053:53/udp
+PusblishPort=8053:53
+Volume=/opt/data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d/:rw
+Volume=/opt/data/pihole/etc-pihole:/etc/pihole:rw
+# The entry-point scripts set up IPV6. Kill that
+Tmpfs=/docker-entrypoint.d
+
+GlobalArgs=--log-level=warn --log-opt tag="pihole"
+PodmanArgs=--group-add=keep-groups --cap-add=CAP_NET_RAW,CAP_NET_BIND_SERVICE --cidfile=/var/run/user/3020/pihole.cid
+
+[Unit]
+# Cannot depend on root service. Instead relies on pihole-prep comes before podman-user-wait-network-online.service
+#Requires=pihole-prep.service
+#After=pihole-prep.service
+
+[Install]
+WantedBy=default.target

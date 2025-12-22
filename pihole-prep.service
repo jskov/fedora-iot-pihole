@@ -1,0 +1,25 @@
+# Preparation script for running pihole.
+# To be placed in /usr/lib/systemd/system/pihole-prep.service
+#
+# The script runs as root and contains actions to:
+# * Ensures user pihole is created
+# * Ensures the data folders are created
+# * Sets up linger for the pihole user
+
+[Service]
+Type=oneshot
+
+ExecStartPre=sh -c 'id pihole 2>/dev/null || useradd --uid 3020 pihole'
+ExecStartPre=-/bin/bash -c "/bin/mkdir -p /opt/data/pihole/etc-pihole && /bin/chown pihole:pihole /opt/data/pihole/etc-pihole"
+ExecStartPre=-/bin/bash -c "/bin/mkdir -p /opt/data/pihole/etc-dnsmasq.d && /bin/chown pihole:pihole /opt/data/pihole/etc-dnsmasq.d"
+ExecStart=loginctl enable-linger pihole
+RemainAfterExit=true
+
+[Unit]
+# Wait for sysusers (so creating user is ok)
+After=systemd-sysusers.service
+# Do it before network-online which user quadlets wait for
+Before=network-online.target
+
+[Install]
+WantedBy=default.target
