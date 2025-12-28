@@ -23,9 +23,9 @@ Image = @PIHOLE_IMAGE@
 
 ContainerName=pihole
 Environment=TZ=Europe/Copenhagen
-PublishPort=8080:80
-PublishPort=8053:53/udp
-PublishPort=8053:53
+PublishPort=11043:443
+PublishPort=11053:53/udp
+PublishPort=11053:53
 Volume=/opt/data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d/:Z,rw
 Volume=/opt/data/pihole/etc-pihole:/etc/pihole:Z,rw
 # The entry-point scripts set up IPV6. Kill that

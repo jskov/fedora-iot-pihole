@@ -1,6 +1,6 @@
 Name: pihole
 Version: 2025.11.1
-Release: 0%{?dist}
+Release: 1%{?dist}
 Summary: Pihole for mada.dk
 
 License: EUPL-1.2
@@ -53,7 +53,3 @@ install -Dp -m644 %{_builddir}/pihole.container %{buildroot}/etc/containers/syst
 %changelog
 * Sat Dec 27 2025 Jesper Skov <jskov@mada.dk> 2025.11.1-0
 - new package built with tito
-
-* Sat Dec 27 2025 Jesper Skov <jskov@mada.dk> 2025.11.1-0
-- new package built with tito
-
