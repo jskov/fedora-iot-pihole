@@ -55,8 +55,8 @@ Install the RPM; the --uninstall allows updating an existing layered rpm (older 
 # Store the RPM locally - do not delete, as long as the RPM is included
 $ scp /tmp/tito/x86_64/pihole* mada:/tmp/
 
-$ mv /tmp/pihole-2025.11.1-1.git.1.9b738e6.fc42.x86_64.rpm ~/_local_layers/pihole/
-$ sudo rpm-ostree install /var/home/jskov/_local_layers/pihole/pihole-2025.11.1-1.git.1.9b738e6.fc42.x86_64.rpm --uninstall pihole
+$ mv /tmp/pihole-* ~/_local_layers/pihole/
+$ sudo rpm-ostree install /var/home/jskov/_local_layers/pihole/pihole-2025.11.1-1.fc43.x86_64.rpm --uninstall pihole
 ```
 
 Enable the prep-service; the systemd policy for enabling a service does not appear to work (on Atom?):
