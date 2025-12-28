@@ -51,5 +51,8 @@ install -Dp -m644 %{_builddir}/pihole.container %{buildroot}/etc/containers/syst
 /etc/containers/systemd/users/3020/pihole.container
 
 %changelog
+* Sun Dec 28 2025 Jesper Skov <jskov@mada.dk> 2025.11.1-1
+- Assign new ports (jskov@mada.dk)
+
 * Sat Dec 27 2025 Jesper Skov <jskov@mada.dk> 2025.11.1-0
 - new package built with tito
