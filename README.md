@@ -40,6 +40,7 @@ $ tito tag --keep-version
 #  ERROR: Unable to lookup latest package info.
 #  Perhaps you need to tag first?
 
+$ git push --follow-tags origin
 $ rm -rf /tmp/tito/x86_64/ ; tito build --rpm
 ```
 
