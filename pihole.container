@@ -23,6 +23,7 @@ Image = @PIHOLE_IMAGE@
 
 ContainerName=pihole
 Environment=TZ=Europe/Copenhagen
+HostName=pihole.mada.dk
 PublishPort=11443:443
 PublishPort=11053:53/udp
 PublishPort=11053:53
