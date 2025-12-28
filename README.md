@@ -27,7 +27,22 @@ $ rpmlint pihole.spec
 $ rm -rf /tmp/tito/x86_64/ ; tito build --rpm --test
 ```
 
-To test the RPM, install it on a boxed version of Fedora.
+Update spec version (--keep-version to keep manually maintained version in spec file):
+
+```console
+$ export EDITOR=vi
+$ tito tag --keep-version
+
+# This will result in a tag on the git repository, named 'reverse-proxy-$WHATEVER'
+# And an updated file .tito/packages/reverse-proxy
+
+# Note that without the above, the build command will fail with the message:
+#  ERROR: Unable to lookup latest package info.
+#  Perhaps you need to tag first?
+
+$ rm -rf /tmp/tito/x86_64/ ; tito build --rpm
+```
+
 
 ## Installation
 
