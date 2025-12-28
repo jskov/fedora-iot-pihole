@@ -23,7 +23,7 @@ Image = @PIHOLE_IMAGE@
 
 ContainerName=pihole
 Environment=TZ=Europe/Copenhagen
-PublishPort=11043:443
+PublishPort=11443:443
 PublishPort=11053:53/udp
 PublishPort=11053:53
 Volume=/opt/data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d/:Z,rw
