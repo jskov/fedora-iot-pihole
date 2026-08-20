@@ -3,4 +3,4 @@
 #   * to get Dependabot to notify about nginx image updates
 
 # This is docker.io/pihole/pihole:2025.11.1
-FROM docker.io/pihole/pihole@sha256:91dc91ddd413bf461c283204558f8f21839851e9824799075a7ceff7c77eea40
+FROM docker.io/pihole/pihole@sha256:f7d1be836e3bc608b56d82fc9904f5a831cdfbc0dc9c6d58f94e4c985c70038b
